@@ -1,0 +1,14 @@
+# Go
+bin/
+*.exe
+*.test
+coverage.out
+# IDE
+.vscode/
+.idea/
+# OS
+Thumbs.db
+.DS_Store
+# Local data
+*.db
+*.log
