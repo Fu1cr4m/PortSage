@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module github.com/Fu1cr4m/PortSage
 
 go 1.25.4
@@ -28,4 +29,13 @@ require (
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	golang.org/x/text v0.3.8 // indirect
+=======
+module github.com/YOUR_ORG/portsage
+
+go 1.22
+
+require (
+    github.com/mattn/go-sqlite3 v1.14.21
+    gopkg.in/yaml.v3 v3.0.1
+>>>>>>> 05f956e3658e71d397ea15ccc82db6860539b52a
 )

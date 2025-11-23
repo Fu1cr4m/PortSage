@@ -1,0 +1,24 @@
+version: 1
+defaults:
+  when: { network_category: [Domain, Private], session_locked: false }
+  action: allow
+  mount: { readonly: true }
+  runtime:
+    scan: defender_quick
+    key_injection_guard: { after_new_keyboard_ms: 3000, rate_threshold_hz: 12, jitter_ms_p95: 30 }
+rules:
+  - name: "RNDIS 即插即隔离"
+    match: { usb_compatible_ids: ["USB\\Class_EF&SubClass_04"] }
+    action: quarantine_network
+    runtime: { firewall_profile: Public }
+  - name: "新键盘冷启动高频输入 → 暂扣"
+    match:
+      class: HIDKeyboard
+      arrival_within_ms: 5000
+      runtime.key_injection: { rate_hz: ">=15", jitter_ms_p95: "<20" }
+    action: disable_devnode
+    notify: true
+  - name: "公司Wi-Fi + 工作时段 → 存储读写放开"
+    match: { class: USBSTOR, wlan_ssid: ["CorpWiFi-5G"], time_range: "09:00-19:00" }
+    action: allow
+    mount: { readonly: false }
