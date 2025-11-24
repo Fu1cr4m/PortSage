@@ -65,4 +65,3 @@ go build -o portsage.exe ./cmd/app/main.go
 ## ⚠️ 免责声明 (Disclaimer)
 
 本工具仅供安全研究和授权的系统管理使用。修改 Windows 注册表存在一定风险，作者不对因使用本工具导致的任何系统故障或数据丢失承担责任。
-=======
